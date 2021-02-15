@@ -1,23 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import Headline from './Headline';
+import Form from './Form';
+import ShoppingList from './ShoppingList';
 
 function App() {
+  const shoppingItems = [
+    { title: 'Hat', isDone: false },
+    { title: 'Butter Beer', isDone: false },
+    { title: 'Nimbus 2022', isDone: false },
+    { title: 'The Daily Prophet', isDone: false },
+  ];
+
+  function getTitle(name) {
+    return name + '`s Shopping List';
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Headline name={getTitle('Harry')} />
+      <Form buttonText="Add to list" />
+      <ShoppingList shoppingList={shoppingItems} />
     </div>
   );
 }
