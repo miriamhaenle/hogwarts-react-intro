@@ -1,8 +1,16 @@
-export default function ShoppingItem({ title, isDone }) {
+import './ShoppingItem.css';
+
+export default function ShoppingItem({ title, isDone, onToggleCheckbox }) {
   return (
-    <section>
-      <input type="checkbox" checked={isDone} />
+    <label>
+      <input
+        type="checkbox"
+        checked={isDone}
+        onChange={onToggleCheckbox}
+        className="checkbox"
+      />
+
       {title}
-    </section>
+    </label>
   );
 }

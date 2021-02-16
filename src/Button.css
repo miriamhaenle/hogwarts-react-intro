@@ -1,7 +1,16 @@
 .button {
-  background: rebeccapurple;
+  background: #2d004d;
   border: none;
+  border-radius: 4px;
   color: ivory;
-  padding: 0.5rem 8rem;
+  font-size: 1.2rem;
   margin: 1rem 0;
+  padding: 0.5rem 8rem;
+  transition: background 0.5s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.button:hover {
+  background: rebeccapurple;
+  box-shadow: 3px 3px 10px rgba(45, 0, 77, 0.5);
+  cursor: pointer;
 }

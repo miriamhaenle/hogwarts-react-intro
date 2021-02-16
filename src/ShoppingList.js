@@ -1,11 +1,15 @@
 import ShoppingItem from './ShoppingItem';
 
-export default function ShoppingList({ shoppingList }) {
+export default function ShoppingList({ shoppingList, onToggleCheckbox }) {
   return (
-    <ul>
-      {shoppingList.map(({ title, isDone }) => (
-        <ShoppingItem title={title} isDone={isDone} />
+    <section>
+      {shoppingList.map(({ title, isDone }, index) => (
+        <ShoppingItem
+          title={title}
+          isDone={isDone}
+          onToggleCheckbox={() => onToggleCheckbox(index)}
+        />
       ))}
-    </ul>
+    </section>
   );
 }
