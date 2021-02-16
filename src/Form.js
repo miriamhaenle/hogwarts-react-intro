@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import Button from './Button';
 
 import './Form.css';
@@ -22,6 +24,12 @@ export default function Form({ buttonText, onCreateShoppingItem }) {
         placeholder="What do I need for Hogwarts"
       />
       <Button text={buttonText} />
+      <Button />
     </form>
   );
 }
+
+Form.propTypes = {
+  buttonText: PropTypes.string,
+  onCreateShoppingItem: PropTypes.func,
+};

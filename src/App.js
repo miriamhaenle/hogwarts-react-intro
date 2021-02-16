@@ -34,6 +34,7 @@ function App() {
         shoppingList={shoppingItems}
         onToggleCheckbox={toggleCheckbox}
       />
+      <Form buttonText={() => console.log('hi')} onCreateShoppingItem="Hi" />
     </div>
   );
 }

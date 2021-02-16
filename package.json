@@ -11,6 +11,9 @@
     "react-scripts": "4.0.2",
     "web-vitals": "^1.1.0"
   },
+  "devDependencies": {
+    "prop-types": "^15.7.2"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
