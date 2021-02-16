@@ -28,13 +28,12 @@ function App() {
   }
   return (
     <div className="App">
-      <Headline name={getTitle('Harry')} />
+      <Headline title={getTitle('Harry')} />
       <Form buttonText="Add to list" onCreateShoppingItem={addShoppingItem} />
       <ShoppingList
         shoppingList={shoppingItems}
         onToggleCheckbox={toggleCheckbox}
       />
-      <Form buttonText={() => console.log('hi')} onCreateShoppingItem="Hi" />
     </div>
   );
 }

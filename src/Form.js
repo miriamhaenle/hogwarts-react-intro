@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import Button from './Button';
-
-import './Form.css';
 
 export default function Form({ buttonText, onCreateShoppingItem }) {
   function handleSubmit(event) {
@@ -15,17 +14,15 @@ export default function Form({ buttonText, onCreateShoppingItem }) {
   }
 
   return (
-    <form className="form" onSubmit={handleSubmit}>
-      <h2 className="form__headline">Add shopping item</h2>
+    <Wrapper color={'hotpink'} onSubmit={handleSubmit}>
+      <h2>Add shopping item</h2>
       <input
         name="item"
-        className="input"
         type="text"
         placeholder="What do I need for Hogwarts"
       />
       <Button text={buttonText} />
-      <Button />
-    </form>
+    </Wrapper>
   );
 }
 
@@ -33,3 +30,15 @@ Form.propTypes = {
   buttonText: PropTypes.string,
   onCreateShoppingItem: PropTypes.func,
 };
+
+const Wrapper = styled.form`
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    color: ${(props) => props.color || '#00165e'};
+  }
+  input {
+    padding: 0.3rem;
+  }
+`;
