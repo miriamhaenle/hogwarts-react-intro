@@ -6,14 +6,20 @@ export default createGlobalStyle`
 }
 
 body {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.25rem;
+  font-family: sans-serif;
   margin: 0;
-  font-size: 112.5%font-size;
 }
+
 
 :root {
-  --primary: hotpink;
-  --secondary: papayawhip;
+  --primary: palevioletred;
+  --secondary: rebeccapurple;
+  --warning: tomato;
+  --success: #badaba;
 }
-
 
 `;
