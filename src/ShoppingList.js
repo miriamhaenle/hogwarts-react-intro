@@ -1,15 +1,29 @@
 import ShoppingItem from './ShoppingItem';
+import styled from 'styled-components';
 
-export default function ShoppingList({ shoppingList, onToggleCheckbox }) {
+export default function ShoppingList({
+  shoppingList,
+  onToggleCheckbox,
+  onDeleteItem,
+}) {
   return (
-    <section>
-      {shoppingList.map(({ title, isDone }, index) => (
+    <ListWrapper>
+      {shoppingList.map(({ title, isDone, id }) => (
         <ShoppingItem
+          key={id}
           title={title}
           isDone={isDone}
-          onToggleCheckbox={() => onToggleCheckbox(index)}
+          onToggleCheckbox={() => onToggleCheckbox(id)}
+          onDeleteItem={() => onDeleteItem(id)}
         />
       ))}
-    </section>
+    </ListWrapper>
   );
 }
+
+const ListWrapper = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-top: 0.5rem;
+`;

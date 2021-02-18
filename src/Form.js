@@ -1,37 +1,40 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-
 import Button from './Button';
 
-export default function Form({ buttonText, onCreateShoppingItem }) {
+export default function Form({ onCreateShoppingItem, headline }) {
   function handleSubmit(event) {
     event.preventDefault();
     const form = event.target;
     const input = form.item;
-    onCreateShoppingItem(input.value);
-    form.reset();
-    input.focus();
+    if (input.value.length >= 1) {
+      onCreateShoppingItem(input.value);
+      form.reset();
+
+      input.focus();
+    }
   }
 
   return (
-    <Wrapper onSubmit={handleSubmit}>
-      <h2>Add shopping item</h2>
+    <FormWrapper className="form" onSubmit={handleSubmit}>
+      <h2>{headline}</h2>
       <input
         name="item"
+        className="input"
         type="text"
         placeholder="What do I need for Hogwarts"
       />
-      <Button text={buttonText} />
-    </Wrapper>
+      <Button text="Add" />
+    </FormWrapper>
   );
 }
 
 Form.propTypes = {
-  buttonText: PropTypes.string,
   onCreateShoppingItem: PropTypes.func,
+  headline: PropTypes.string,
 };
 
-const Wrapper = styled.form`
+const FormWrapper = styled.form`
   display: flex;
   flex-direction: column;
 
@@ -39,6 +42,6 @@ const Wrapper = styled.form`
     color: #00165e;
   }
   input {
-    padding: 0.3rem;
+    padding: 0.4rem;
   }
 `;
