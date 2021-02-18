@@ -52,7 +52,7 @@ function App() {
         headline="What I need to buy"
         onCreateShoppingItem={addShoppingItem}
       />
-      {shoppingItems.length >= 1 && (
+      {shoppingItems.length > 0 && (
         <Button
           text="Clear"
           clickHandler={deleteAll}
