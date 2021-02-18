@@ -1,9 +1,9 @@
-import './ShoppingItem.css';
+import styled from 'styled-components';
 
 export default function ShoppingItem({ title, isDone, onToggleCheckbox }) {
   return (
     <label>
-      <input
+      <Checkbox
         type="checkbox"
         checked={isDone}
         onChange={onToggleCheckbox}
@@ -14,3 +14,7 @@ export default function ShoppingItem({ title, isDone, onToggleCheckbox }) {
     </label>
   );
 }
+
+const Checkbox = styled.input`
+  margin-right: 0.8rem;
+`;

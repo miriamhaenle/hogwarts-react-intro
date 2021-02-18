@@ -14,7 +14,7 @@ export default function Form({ buttonText, onCreateShoppingItem }) {
   }
 
   return (
-    <Wrapper color={'hotpink'} onSubmit={handleSubmit}>
+    <Wrapper onSubmit={handleSubmit}>
       <h2>Add shopping item</h2>
       <input
         name="item"
@@ -36,7 +36,7 @@ const Wrapper = styled.form`
   flex-direction: column;
 
   h2 {
-    color: ${(props) => props.color || '#00165e'};
+    color: #00165e;
   }
   input {
     padding: 0.3rem;
