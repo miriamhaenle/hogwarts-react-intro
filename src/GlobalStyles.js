@@ -9,18 +9,17 @@ body {
   align-items: center;
   display: flex;
   flex-direction: column;
-  font-size: 1.25rem;
   font-family: sans-serif;
+  font-size: 1.25rem;
   margin: 0;
-  font-size: 112.5%;
 }
 
-
 :root {
-  --primary: palevioletred;
-  --secondary: rebeccapurple;
-  --warning: tomato;
-  --success: #badaba;
+  --primary: #2d004d;
+  --griffindor: #9c1203;
+  --hufflepuff: #033807;
+  --slytherin: #E3A000;
+  --ravenclaw: #00165e;
 }
 
 `;

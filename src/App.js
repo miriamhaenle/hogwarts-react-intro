@@ -15,6 +15,8 @@ function App() {
     loadFromLocal(STORAGE_KEY) ?? []
   );
 
+  const [openShoppingItems, setOpenShoppingItems] = useState([]);
+
   useEffect(() => {
     saveToLocal(STORAGE_KEY, shoppingItems);
   }, [shoppingItems]);
@@ -45,6 +47,12 @@ function App() {
   function deleteAll() {
     setShoppingItems([]);
   }
+
+  function showOpenItems() {
+    const openItems = shoppingItems.filter((item) => !item.isDone);
+    setOpenShoppingItems(openItems);
+  }
+
   return (
     <Wrapper>
       <Headline name="Hermine's Shopping List" />
@@ -59,8 +67,24 @@ function App() {
           color="var(--hufflepuff)"
         />
       )}
+      <Filter>
+        <Button
+          text="Show all"
+          color="white"
+          outlined={openShoppingItems.length === 0}
+          clickHandler={() => setOpenShoppingItems([])}
+        />
+        <Button
+          text="Show open items"
+          color="white"
+          outlined={openShoppingItems.length > 0}
+          clickHandler={showOpenItems}
+        />
+      </Filter>
       <ShoppingList
-        shoppingList={shoppingItems}
+        shoppingList={
+          openShoppingItems.length > 0 ? openShoppingItems : shoppingItems
+        }
         onToggleCheckbox={toggleCheckbox}
         onDeleteItem={deleteItem}
       />
@@ -73,4 +97,16 @@ export default App;
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+const Filter = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+
+  Button {
+    width: 50%;
+    color: #1b002e;
+    border-bottom: 2px solid #1b002e;
+    border-radius: 0 0 4px 0;
+  }
 `;
