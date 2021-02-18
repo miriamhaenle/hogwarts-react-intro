@@ -1,11 +1,20 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import Headline from './Headline';
 import Form from './Form';
 import ShoppingList from './ShoppingList';
+import loadFromLocal from './lib/loadFromLocal';
+import saveToLocal from './lib/saveToLocal';
 
 function App() {
-  const [shoppingItems, setShoppingItems] = useState([]);
+  const STORAGE_KEY = 'shoppingList';
+  const [shoppingItems, setShoppingItems] = useState(
+    loadFromLocal(STORAGE_KEY) ?? []
+  );
+
+  useEffect(() => {
+    saveToLocal(STORAGE_KEY, shoppingItems);
+  }, [shoppingItems]);
 
   function addShoppingItem(item) {
     const shoppingItem = { title: item, isDone: false };
