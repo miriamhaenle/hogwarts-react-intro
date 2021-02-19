@@ -36,7 +36,6 @@ function App() {
     });
 
     setShoppingItems(itemsWithToggle);
-    openShoppingItems.length > 0 && showOpenItems();
   }
 
   function deleteItem(idToDelete) {
