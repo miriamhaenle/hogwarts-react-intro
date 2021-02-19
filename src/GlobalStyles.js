@@ -14,6 +14,7 @@ body {
   margin: 0;
 }
 
+
 :root {
   --primary: #2d004d;
   --griffindor: #9c1203;
