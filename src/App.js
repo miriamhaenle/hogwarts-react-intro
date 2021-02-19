@@ -24,6 +24,7 @@ function App() {
   function addShoppingItem(item) {
     const shoppingItem = { title: item, isDone: false, id: uuidv4() };
     setShoppingItems([...shoppingItems, shoppingItem]);
+    setOpenShoppingItems([...openShoppingItems, shoppingItem]);
   }
 
   function toggleCheckbox(idToToggle) {
@@ -35,6 +36,7 @@ function App() {
     });
 
     setShoppingItems(itemsWithToggle);
+    openShoppingItems.length > 0 && showOpenItems();
   }
 
   function deleteItem(idToDelete) {
@@ -52,6 +54,8 @@ function App() {
     const openItems = shoppingItems.filter((item) => !item.isDone);
     setOpenShoppingItems(openItems);
   }
+  const itemsToShow =
+    openShoppingItems.length > 0 ? openShoppingItems : shoppingItems;
 
   return (
     <Wrapper>
@@ -82,9 +86,7 @@ function App() {
         />
       </Filter>
       <ShoppingList
-        shoppingList={
-          openShoppingItems.length > 0 ? openShoppingItems : shoppingItems
-        }
+        shoppingList={itemsToShow}
         onToggleCheckbox={toggleCheckbox}
         onDeleteItem={deleteItem}
       />
