@@ -6,20 +6,32 @@ import Headline from './Headline';
 import Form from './Form';
 import ShoppingList from './ShoppingList';
 import Button from './Button';
+import fetchShoppingItems from './services/fetchShoppingItems';
 import loadFromLocal from './lib/loadFromLocal';
 import saveToLocal from './lib/saveToLocal';
 
 function App() {
-  const STORAGE_KEY = 'shoppingList';
-  const [shoppingItems, setShoppingItems] = useState(
-    loadFromLocal(STORAGE_KEY) ?? []
-  );
+  //const STORAGE_KEY = 'shoppingList';
+  const [shoppingItems, setShoppingItems] = useState([]);
 
   const [openShoppingItems, setOpenShoppingItems] = useState([]);
 
+  // useEffect(() => {
+  //   saveToLocal(STORAGE_KEY, shoppingItems);
+  // }, [shoppingItems]);
+
   useEffect(() => {
-    saveToLocal(STORAGE_KEY, shoppingItems);
-  }, [shoppingItems]);
+    fetchShoppingItems()
+      .then((items) => {
+        const itemsFromAPI = items.map((item) => ({
+          title: item.title,
+          id: item.id,
+          isDone: item.completed,
+        }));
+        setShoppingItems(itemsFromAPI);
+      })
+      .catch((error) => console.error(error.message));
+  }, []);
 
   function addShoppingItem(item) {
     const shoppingItem = { title: item, isDone: false, id: uuidv4() };

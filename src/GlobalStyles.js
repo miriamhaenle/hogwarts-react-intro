@@ -11,7 +11,8 @@ body {
   flex-direction: column;
   font-family: sans-serif;
   font-size: 1.25rem;
-  margin: 0;
+  margin: 0 auto;
+  max-width: 500px;
 }
 
 
