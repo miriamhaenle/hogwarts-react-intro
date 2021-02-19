@@ -59,7 +59,7 @@ function App() {
 
   return (
     <Wrapper>
-      <Headline name="Hermine's Shopping List" />
+      <Headline title="Hogwarts shopping list" />
       <Form
         headline="What I need to buy"
         onCreateShoppingItem={addShoppingItem}
