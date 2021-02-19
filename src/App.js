@@ -23,12 +23,9 @@ function App() {
     setShoppingItems([...firstHalf, itemToToggle, ...secondHalf]);
   }
 
-  function getTitle(name) {
-    return name + '`s Shopping List';
-  }
   return (
     <div className="App">
-      <Headline name={getTitle('Harry')} />
+      <Headline title="Hogwarts shopping list" />
       <Form buttonText="Add to list" onCreateShoppingItem={addShoppingItem} />
       <ShoppingList
         shoppingList={shoppingItems}
